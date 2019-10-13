@@ -24,3 +24,18 @@ D:\Навчання\третій курс\Людино-машинний інте
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\CourseWork\obj\Debug\CourseWork.Form1.resources
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.csprojAssemblyReference.cache
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.Form1.resources
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.cache
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.csproj.CoreCompileInputs.cache
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.exe
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.pdb
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\CourseWork.exe.config
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\CourseWork.exe
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\CourseWork.pdb
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\BackPropagation.dll
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\Npgsql.dll
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\BackPropagation.pdb
+F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\Npgsql.xml
+F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.csproj.CopyComplete

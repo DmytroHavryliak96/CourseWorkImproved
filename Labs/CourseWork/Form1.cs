@@ -11,18 +11,25 @@ using System.Diagnostics;
 using Npgsql;
 using NeuralNetwork;
 using System.IO;
+using CourseWork.Models;
+using CourseWork.Services;
 
 
 namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        // змінні для зчитування з бд
-        DataSet ds = new DataSet(); // множина даних для запиту №1
-        DataSet ds2 = new DataSet(); // множина даних для запиту №2
-        DataTable dt = new DataTable(); // таблиця даних для запиту №1
-        DataTable dt2 = new DataTable(); // таблиця даних для запиту №2
-        string[] ParametersNames; // назви параметрів керогену
+		// змінні для зчитування з бд
+		//DataSet ds = new DataSet(); // множина даних для запиту №1
+		// DataSet ds2 = new DataSet(); // множина даних для запиту №2
+		// DataTable dt = new DataTable(); // таблиця даних для запиту №1
+		// DataTable dt2 = new DataTable(); // таблиця даних для запиту №2
+
+		InputDataModel model;
+		CsvReader reader;
+
+
+		string[] ParametersNames = { "c", "h", "o", "n", "s"}; // назви параметрів керогену
         Stopwatch sWatch = new Stopwatch(); // клас для вимірювання часу навчання мережі BackPropagation
         Stopwatch sWatch2 = new Stopwatch(); // клас для вимірювання часу навчання мережі LVQ
         TimeSpan tSpan; // клас для перетворення даних про час навчання
@@ -89,15 +96,45 @@ namespace CourseWork
 
         }
 
-        // завантаження даних з бд для навчання мереж
+        // завантаження даних з csv файлу для навчання мереж
         private void DownloadFromDB_Click(object sender, EventArgs e)
         {
-            try
+			OpenFileDialog openCsvFile = new OpenFileDialog();
+			openCsvFile.Filter = "Текстові документи|*.txt";
+
+
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				string fileName = openFileDialog.FileName;
+				reader = new CsvReader(fileName);
+				MessageBox.Show("fileName");
+			}
+
+			try
+			{
+				reader.ParseAll();
+				model = reader.model;
+
+				TRAINING_PATTERNS = model.TrainingPatterns;
+				PARAMETERS = model.Parameters;
+				NUM_OF_CLUSTERS =model.NumOfClusters;
+
+				inputs = model.Inputs;
+				answers = model.Answers;
+
+
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+
+			/*try
             {
                 //  під'єднання до бд
-                string connstring = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=1postgres;Database=Labs;";
-                NpgsqlConnection conn = new NpgsqlConnection(connstring);
-                conn.Open();
+                //string connstring = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=1postgres;Database=Labs;";
+                //NpgsqlConnection conn = new NpgsqlConnection(connstring);
+                //conn.Open();
                 string sql = "SELECT * FROM train ORDER BY id";
                 string sql1 = "SELECT DISTINCT Type FROM train ORDER BY Type";
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
@@ -109,6 +146,7 @@ namespace CourseWork
                 da.Fill(ds2);
                 dt2 = ds2.Tables[0];
                 conn.Close();
+
 
                 TRAINING_PATTERNS = dt.Rows.Count;
                 PARAMETERS = dt.Columns.Count - 2;
@@ -147,7 +185,7 @@ namespace CourseWork
             {
                 MessageBox.Show(msg.ToString());
                 throw;
-            }
+            }*/
 
         }
 

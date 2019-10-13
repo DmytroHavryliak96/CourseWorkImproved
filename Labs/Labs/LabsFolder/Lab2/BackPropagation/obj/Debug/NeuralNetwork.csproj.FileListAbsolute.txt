@@ -8,3 +8,9 @@ D:\Навчання\третій курс\Людино-машинний інте
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\NeuralNetwork.csprojResolveAssemblyReference.cache
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\BackPropagation.dll
 D:\Навчання\третій курс\Людино-машинний інтерфейс\Самостійна робота\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\BackPropagation.pdb
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\bin\Debug\BackPropagation.dll
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\bin\Debug\BackPropagation.pdb
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\NeuralNetwork.csprojAssemblyReference.cache
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\NeuralNetwork.csproj.CoreCompileInputs.cache
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\BackPropagation.dll
+F:\CourseWorkImproved\Labs\Labs\LabsFolder\Lab2\BackPropagation\obj\Debug\BackPropagation.pdb
