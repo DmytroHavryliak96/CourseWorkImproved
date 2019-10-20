@@ -342,16 +342,24 @@ namespace NeuralNetwork
         public int getCluster(double[] input, double[] output)
         {
             Run(ref input, out output);
-            if ((output[0] >= -1.0) && (output[0] < -0.3))
+            if ((output[0] >= -1.0) && (output[0] < -0.5))
                 return 1;
             else
             {
-                if ((output[0] >= -0.3) && (output[0] < 0.3))
+                if ((output[0] >= -0.5) && (output[0] < 0))
                     return 2;
                 else
-                    return 3;
+                {
+                    if ((output[0] >= 0) && (output[0] < 0.5))
+                        return 3;
+                    else
+                        return 4;
+
+                }
+                    
             }
         }
+
 
         // Зберігання ваг
         public void Save(string filepath)
@@ -875,13 +883,14 @@ namespace NeuralNetwork
         // Ініціалізація ваг відповідно до навчальної вибірки
         private void InitializeWeights()
         {
+            var rnd = new Random();
             weights = new double[NUMBER_OF_CLUSTERS * 3][];
             for (int i = 0; i < NUMBER_OF_CLUSTERS * 3; i++)
                 weights[i] = new double[VEC_LEN];
 
             for (int i = 0; i < NUMBER_OF_CLUSTERS * 3; i++)
                 for (int j = 0; j < VEC_LEN; j++)
-                    weights[i][j] = mPattern[i][j];
+                    weights[i][j] = rnd.NextDouble(); /*mPattern[i][j]*/;
             
         }
 
@@ -891,8 +900,10 @@ namespace NeuralNetwork
             Random rnd = new Random();
             double error;
             int amount = 0;
+            int iterations = 0;
             do 
             {
+                iterations++;
                 error = 0.0;
 
                 // Створення навчальної вибірки
@@ -916,7 +927,7 @@ namespace NeuralNetwork
                 amount++;
                 // Зменшуємо швидкість навчання
                 alpha = DECAY_RATE * alpha;
-            }while (error > MIN_ERROR);
+            }while (error > MIN_ERROR && iterations <= 100000);
             Console.WriteLine("amount of cycles {0}", amount);
         }
 
@@ -938,7 +949,12 @@ namespace NeuralNetwork
                 if (winner >= 3 && winner < 6)
                     cluster = 1;
                 else
-                    cluster = 2;
+                {
+                    if (winner >= 6 && winner < 9)
+                        cluster = 2;
+                    else
+                        cluster = 3;
+                }    
             }
            
             for (int i = 0; i < VEC_LEN; i++)
@@ -958,10 +974,10 @@ namespace NeuralNetwork
             // знаходимо величину зміни ваг
             for (int i = 0; i < VEC_LEN; i++)
             {
-                distance += Math.Pow(previousWeight2[i] - weights[winner][i], 2);
+                distance += Math.Abs(previousWeight2[i] - weights[winner][i]);
             }
 
-            distance = Math.Sqrt(distance);
+            //distance;
 
             return distance;
         }
@@ -979,7 +995,12 @@ namespace NeuralNetwork
                 if (winner >= 3 && winner < 6)
                     cluster = 1;
                 else
-                    cluster = 2;
+                {
+                    if (winner >= 6 && winner < 9)
+                        cluster = 2;
+                    else
+                        cluster = 3;
+                } 
             }
 
             return cluster + 1;
@@ -1241,11 +1262,14 @@ namespace NeuralNetwork
             for(int i = 0; i < answers.GetUpperBound(0) + 1; i++)
             {
                 if (answers[i][0] == 1)
-                    returnAnswer[i][0] = -1;
+                    returnAnswer[i][0] = -0.75;
                 if (answers[i][0] == 2)
-                    returnAnswer[i][0] = 0;
+                    returnAnswer[i][0] = -0.25;
                 if (answers[i][0] == 3)
-                    returnAnswer[i][0] = 1;
+                    returnAnswer[i][0] = 0.25;
+                if (answers[i][0] == 4)
+                    returnAnswer[i][0] = 0.75;
+
             }
             return returnAnswer;
         } 

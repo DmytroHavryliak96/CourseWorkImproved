@@ -39,3 +39,17 @@ F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\Npgsql.dll
 F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\BackPropagation.pdb
 F:\CourseWorkImproved\Labs\CourseWork\bin\Debug\Npgsql.xml
 F:\CourseWorkImproved\Labs\CourseWork\obj\Debug\CourseWork.csproj.CopyComplete
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\CourseWork.exe.config
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\CourseWork.exe
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\CourseWork.pdb
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\BackPropagation.dll
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\Npgsql.dll
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\BackPropagation.pdb
+D:\Projects\neuroComUpdate\Labs\CourseWork\bin\Debug\Npgsql.xml
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.csprojAssemblyReference.cache
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.Form1.resources
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.cache
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.csproj.CopyComplete
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.exe
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.pdb

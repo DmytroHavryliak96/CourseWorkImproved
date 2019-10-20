@@ -13,6 +13,7 @@ using NeuralNetwork;
 using System.IO;
 using CourseWork.Models;
 using CourseWork.Services;
+using System.Globalization;
 
 
 namespace CourseWork
@@ -26,8 +27,8 @@ namespace CourseWork
 		// DataTable dt2 = new DataTable(); // таблиця даних для запиту №2
 
 		InputDataModel model;
-		CsvReader reader;
 
+        string separator;
 
 		string[] ParametersNames = { "c", "h", "o", "n", "s"}; // назви параметрів керогену
         Stopwatch sWatch = new Stopwatch(); // клас для вимірювання часу навчання мережі BackPropagation
@@ -46,7 +47,7 @@ namespace CourseWork
         int TRAINING_PATTERNS; // кількість паттернів у навчальній вибірці
         int PARAMETERS; // кількість параметрів керогену 
         int NUM_OF_CLUSTERS; // кількість кластерів керогену
-        int TestAmount; // кількість випадкової вибірки для тестування мереж
+        //int TestAmount; // кількість випадкової вибірки для тестування мереж
 
         // Параметри BackPropagation
         int[] layerSizes; // кількість шарів та нейронів у шарах
@@ -70,6 +71,9 @@ namespace CourseWork
 
         // Випадкова тестова вибірка
         double[][] testArray;
+        double[][] testArrayAnswers;
+
+        int testPatterns;
 
         // мережа BackPropagation
         BackPropagationNetwork bpn = null;
@@ -82,12 +86,13 @@ namespace CourseWork
             InitializeComponent();
          
             this.RandomResults.DataSource = ResultTestBackPropagation;
-            saveFileDialog.Filter = "XML - документи |*.xml";
-            saveFileDialog2.Filter = "XML - документи |*.xml";
-            saveResultsFileDialog.Filter = "Текстові документи|*.txt";
-            saveFileDialog1.Filter = "Текстові документи|*.txt";
-            saveFileDialog3.Filter = "Текстові документи|*.txt";
-            saveFileDialog4.Filter = "Текстові документи|*.txt";
+            saveFileDialog.Filter = "XML - documents |*.xml";
+            saveFileDialog2.Filter = "XML - documents |*.xml";
+            saveResultsFileDialog.Filter = "Csv-file|*.csv";
+            saveFileDialog1.Filter = "Csv-file|*.csv";
+            saveFileDialog3.Filter = "Csv-file|*.csv";
+            saveFileDialog4.Filter = "Csv-file|*.csv";
+            separator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
 
         }
 
@@ -100,34 +105,38 @@ namespace CourseWork
         private void DownloadFromDB_Click(object sender, EventArgs e)
         {
 			OpenFileDialog openCsvFile = new OpenFileDialog();
-			openCsvFile.Filter = "Текстові документи|*.txt";
+			openCsvFile.Filter = "CSV-file|*.csv";
+
+            CsvReader reader;
+
+            if (openCsvFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openCsvFile.FileName;
+                reader = new CsvReader(fileName, CultureInfo.CurrentUICulture.Name);
+                MessageBox.Show(fileName);
 
 
-			if (openFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				string fileName = openFileDialog.FileName;
-				reader = new CsvReader(fileName);
-				MessageBox.Show("fileName");
-			}
+                try
+                {
+                    reader.ParseAll();
+                    model = reader.model;
 
-			try
-			{
-				reader.ParseAll();
-				model = reader.model;
+                    TRAINING_PATTERNS = model.TrainingPatterns;
+                    PARAMETERS = model.Parameters;
+                    NUM_OF_CLUSTERS = model.NumOfClusters;
 
-				TRAINING_PATTERNS = model.TrainingPatterns;
-				PARAMETERS = model.Parameters;
-				NUM_OF_CLUSTERS =model.NumOfClusters;
-
-				inputs = model.Inputs;
-				answers = model.Answers;
+                    inputs = model.Inputs;
+                    answers = model.Answers;
 
 
-			}
-			catch(Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return;
+                }
+            }
+            else return;
 
 			/*try
             {
@@ -263,8 +272,45 @@ namespace CourseWork
                 MessageBox.Show("Спочатку завантажте дані");
                 return;
             }
+
+            OpenFileDialog openCsvFile = new OpenFileDialog();
+            openCsvFile.Filter = "CSV-file|*.csv";
+
+            CsvReader reader;
+
+            if (openCsvFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openCsvFile.FileName;
+                reader = new CsvReader(fileName, CultureInfo.CurrentUICulture.Name);
+                MessageBox.Show(fileName);
+
+                try
+                {
+                    reader.ParseAll();
+                    model = reader.model;
+
+                    /*TRAINING_PATTERNS = model.TrainingPatterns;
+                    PARAMETERS = model.Parameters;
+                    NUM_OF_CLUSTERS = model.NumOfClusters;*/
+
+                    testArray = model.Inputs;
+                    testArrayAnswers = model.Answers;
+
+                    testPatterns = testArray.Length;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return;
+                }
+
+                MessageBox.Show("Тестова випадкова вибірка згенерована");
+            }
+            else return; 
             //TestAmount = Convert.ToInt32(this.testAmountText.Text); 
-            bool result = Int32.TryParse(this.testAmountText.Text, out TestAmount);
+            /*bool result = Int32.TryParse(this.testAmountText.Text, out TestAmount);
             if (result == false)
             {
                 MessageBox.Show("Введіть кількість векторів з випадковими даними, які потрібно згенерувати");
@@ -277,8 +323,9 @@ namespace CourseWork
                 return;
             }   
             testArray = GenerateTest.GenerateOutputICG(PARAMETERS, TestAmount); // створення тестової вибірки
-            Normalize.NormalizeTest(testArray); // нормалізація тестової вибірки
-            MessageBox.Show("Тестова випадкова вибірка згенерована");
+            Normalize.NormalizeTest(testArray); */
+
+            
         }
 
         // вихід із програми
@@ -405,7 +452,7 @@ namespace CourseWork
                     row[0] = i + 1;
                     for (int k = 0; k < PARAMETERS; k++)
                     {
-                        row[k + 1] = inputs[i][k];
+                        row[k + 1] = inputs[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
                     row["Кластер"] = bpn.getCluster(inputs[i], output);
                     ResultTrainBackPropagation.Rows.Add(row);
@@ -440,7 +487,7 @@ namespace CourseWork
                     row[0] = i + 1;
                     for (int k = 0; k < PARAMETERS; k++)
                     {
-                        row[k + 1] = inputs[i][k];
+                        row[k + 1] = inputs[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
                     row["Кластер"] = lvq.getCluster(inputs[i]);
                     ResultTrainLVQ.Rows.Add(row);
@@ -469,13 +516,13 @@ namespace CourseWork
 
                 ResultTestBackPropagation.Columns.Add("Кластер");
 
-                for (int i = 0; i < TestAmount; i++)
+                for (int i = 0; i < testPatterns; i++)
                 {
                     DataRow row = ResultTestBackPropagation.NewRow();
                     row[0] = i + 1;
                     for (int k = 0; k < PARAMETERS; k++)
                     {
-                        row[k + 1] = testArray[i][k];
+                        row[k + 1] = testArray[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
                     row["Кластер"] = bpn.getCluster(testArray[i], output);
                     ResultTestBackPropagation.Rows.Add(row);
@@ -502,13 +549,13 @@ namespace CourseWork
 
                 ResultTestLVQ.Columns.Add("Кластер");
 
-                for (int i = 0; i < TestAmount; i++)
+                for (int i = 0; i < testPatterns; i++)
                 {
                     DataRow row = ResultTestLVQ.NewRow();
                     row[0] = i + 1;
                     for (int k = 0; k < PARAMETERS; k++)
                     {
-                        row[k + 1] = testArray[i][k];
+                        row[k + 1] = testArray[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
                     row["Кластер"] = lvq.getCluster(testArray[i]);
                     ResultTestLVQ.Rows.Add(row);
@@ -530,25 +577,29 @@ namespace CourseWork
         // виклик діалогу для збереження результатів у файл (TrainResults, BackPropagation)
         private void saveResultsFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-           
+
             try
             {
                 string filepath = saveResultsFileDialog.FileName;
-                string text = "ID".PadRight(10);
-                for(int i = 0; i < ParametersNames.Length; i++)
+                string text = "";
+                for (int i = 0; i < ParametersNames.Length; i++)
                 {
-                    text += ParametersNames[i].PadRight(10);
+                    text += ParametersNames[i] + separator;
                 }
-                text += "Кластер".PadRight(10);
+                text += "network answer" + separator + "real value";
                 text += Environment.NewLine;
+
                 foreach (DataGridViewRow row in TrainResults.Rows)
                 {
+                  
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        text += cell.Value.ToString().PadRight(10);
+                        if (cell.ColumnIndex == 0) continue;
+                        text += cell.Value.ToString() + separator;
                        
                     }
-                    text += Environment.NewLine + Environment.NewLine;
+                    text += answers[row.Index][0].ToString();
+                    text += Environment.NewLine;
                 }
                 File.AppendAllText(filepath, text);
                 MessageBox.Show("Результати навчальної вибірки збережено");
@@ -576,21 +627,24 @@ namespace CourseWork
             try
             {
                 string filepath = saveFileDialog3.FileName;
-                string text = "ID".PadRight(10);
+                string text = "";
                 for (int i = 0; i < ParametersNames.Length; i++)
                 {
-                    text += ParametersNames[i].PadRight(10);
+                    text += ParametersNames[i] + separator;
                 }
-                text += "Кластер".PadRight(10);
+                text += "network answer" + separator + "real value";
                 text += Environment.NewLine;
+
                 foreach (DataGridViewRow row in TrainResultsLVQ.Rows)
                 {
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        text += cell.Value.ToString().PadRight(10);
+                        if (cell.ColumnIndex == 0) continue;
+                        text += cell.Value.ToString() + separator;
 
                     }
-                    text += Environment.NewLine + Environment.NewLine;
+                    text += answers[row.Index][0].ToString();
+                    text += Environment.NewLine;
                 }
                 File.AppendAllText(filepath, text);
                 MessageBox.Show("Результати навчальної вибірки збережено");
@@ -618,21 +672,24 @@ namespace CourseWork
             try
             {
                 string filepath = saveFileDialog1.FileName;
-                string text = "ID".PadRight(10);
+                string text = "";
                 for (int i = 0; i < ParametersNames.Length; i++)
                 {
-                    text += ParametersNames[i].PadRight(10);
+                    text += ParametersNames[i] + separator;
                 }
-                text += "Кластер".PadRight(10);
+                text += "network answer" + separator + "real value";
                 text += Environment.NewLine;
+
                 foreach (DataGridViewRow row in RandomResults.Rows)
                 {
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        text += Convert.ToString(Math.Round(Convert.ToDouble(cell.Value.ToString()), 3)).PadRight(10);
+                        if (cell.ColumnIndex == 0) continue;
+                        text += cell.Value.ToString() + separator;
 
                     }
-                    text += Environment.NewLine + Environment.NewLine;
+                    text += testArrayAnswers[row.Index][0].ToString();
+                    text += Environment.NewLine;
                 }
                 File.AppendAllText(filepath, text);
                 MessageBox.Show("Результати випадкової вибірки збережено");
@@ -660,21 +717,24 @@ namespace CourseWork
             try
             {
                 string filepath = saveFileDialog4.FileName;
-                string text = "ID".PadRight(10);
+                string text = "";
                 for (int i = 0; i < ParametersNames.Length; i++)
                 {
-                    text += ParametersNames[i].PadRight(10);
+                    text += ParametersNames[i] + separator;
                 }
-                text += "Кластер".PadRight(10);
+                text += "network answer" + separator + "real value";
                 text += Environment.NewLine;
+
                 foreach (DataGridViewRow row in GeneratedResultsLVQ.Rows)
                 {
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        text += Convert.ToString(Math.Round(Convert.ToDouble(cell.Value.ToString()), 3)).PadRight(10);
+                        if (cell.ColumnIndex == 0) continue;
+                        text += cell.Value.ToString() + separator;
 
                     }
-                    text += Environment.NewLine + Environment.NewLine;
+                    text += testArrayAnswers[row.Index][0].ToString();
+                    text += Environment.NewLine;
                 }
                 File.AppendAllText(filepath, text);
                 MessageBox.Show("Результати випадкової вибірки збережено");
@@ -748,6 +808,22 @@ namespace CourseWork
             saveFileDialog2.ShowDialog();
         }
 
-        
+        private static double GetDouble(string value, double defaultValue)
+        {
+            double result;
+
+            // Try parsing in the current culture
+            if (!double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
+                // Then try in US english
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
+                // Then in neutral language
+                !double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+            {
+                result = defaultValue;
+            }
+            return result;
+        }
+
+
     }
 }

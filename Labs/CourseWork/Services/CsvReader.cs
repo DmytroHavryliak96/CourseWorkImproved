@@ -15,16 +15,18 @@ namespace CourseWork.Services
 		private const int fieldsCount = 6;
 		private const int NuOfClusters = 4;
 		private const int parameters = 5;
+        public string CurrentUICulture { get; private set; }
 	
 		private string[] allLines;
 
 		public InputDataModel model { get; private set; }
 
 		public string[] Data { get; private set; }
-		public CsvReader(string filePath)
+		public CsvReader(string filePath, string currentCulture)
 		{
 			FilePath = filePath;
 			model = new InputDataModel();
+            CurrentUICulture = currentCulture;
 		}
 
 		public void ParseAll()
@@ -32,27 +34,38 @@ namespace CourseWork.Services
 			try
 			{
 				this.allLines = File.ReadAllLines(FilePath);
-				model.TrainingPatterns = allLines.Count();
+				model.TrainingPatterns = allLines.Count()-1;
 			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
 
-			double[][] inputs = new double[allLines.Length][];
-			double[][] answers = new double[allLines.Length][];
+			double[][] inputs = new double[allLines.Length-1][];
+			double[][] answers = new double[allLines.Length-1][];
 
 			try
 			{
-				for (int i = 0; i < allLines.Length; i++)
+                var firstLine = allLines[0].Split(new char[] { ',', ';' });
+                if(firstLine.Length != fieldsCount)
+                    throw new ArgumentException("fields count in file must be " + fieldsCount);
+                if (!firstLine.All(str =>
+                {
+                    if (str.Equals("c") || str.Equals("h") || str.Equals("o")
+                    || str.Equals("n") || str.Equals("s") || str.Equals("type"))
+                        return true;
+                    else return false;
+                })) throw new ArgumentException("errors in header file");
+              
+                for (int i = 1; i < allLines.Length; i++)
 				{
-					string[] fields = allLines[i].Split(',');
+					string[] fields = allLines[i].Split(new char[] { ',', ';' });
 					if (fields.Length != fieldsCount)
 						throw new ArgumentException("fields count in file must be " + fieldsCount);
-					inputs[i] = new double[fieldsCount - 1];
-					answers[i] = new double[1];
+					inputs[i-1] = new double[fieldsCount - 1];
+					answers[i-1] = new double[1];
 
-					inputs[i] = ParseKerogen(fields, out answers[i][0]);
+					inputs[i-1] = ParseKerogen(fields, out answers[i-1][0]);
 
 				}
 			}
@@ -85,5 +98,7 @@ namespace CourseWork.Services
 
 			return input;
 		}
+
+
 	}
 }

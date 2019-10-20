@@ -113,10 +113,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 95);
+            this.tabControl1.Location = new System.Drawing.Point(18, 146);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(851, 530);
+            this.tabControl1.Size = new System.Drawing.Size(1276, 815);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -147,10 +148,11 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.Hidden_Neurons);
             this.tabPage1.Controls.Add(this.CreateBackProp);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(843, 504);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1268, 782);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Мережа BackPropagation";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -158,50 +160,56 @@
             // label19
             // 
             this.label19.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label19.Location = new System.Drawing.Point(608, 50);
+            this.label19.Location = new System.Drawing.Point(912, 77);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(1, 158);
+            this.label19.Size = new System.Drawing.Size(2, 243);
             this.label19.TabIndex = 30;
             // 
             // label18
             // 
             this.label18.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(237, 50);
+            this.label18.Location = new System.Drawing.Point(356, 77);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(1, 158);
+            this.label18.Size = new System.Drawing.Size(2, 243);
             this.label18.TabIndex = 18;
             // 
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(18, 15);
+            this.label17.Location = new System.Drawing.Point(27, 23);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(460, 23);
+            this.label17.Size = new System.Drawing.Size(690, 35);
             this.label17.TabIndex = 29;
             this.label17.Text = "Завантажте з файла або створіть мережу:";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(151, 146);
+            this.label2.Location = new System.Drawing.Point(226, 225);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 48);
+            this.label2.Size = new System.Drawing.Size(94, 74);
             this.label2.TabIndex = 28;
             this.label2.Text = "Зберегти мережу";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(40, 146);
+            this.label1.Location = new System.Drawing.Point(60, 225);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 43);
+            this.label1.Size = new System.Drawing.Size(117, 66);
             this.label1.TabIndex = 27;
             this.label1.Text = "Завантажити мережу";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::CourseWork.Properties.Resources.save_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(154, 74);
+            this.pictureBox2.Location = new System.Drawing.Point(231, 114);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(60, 69);
+            this.pictureBox2.Size = new System.Drawing.Size(90, 106);
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -209,34 +217,38 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources.download;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 74);
+            this.pictureBox1.Location = new System.Drawing.Point(60, 114);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 70);
+            this.pictureBox1.Size = new System.Drawing.Size(90, 108);
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_4);
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(659, 102);
+            this.label9.Location = new System.Drawing.Point(988, 157);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 20);
+            this.label9.Size = new System.Drawing.Size(182, 31);
             this.label9.TabIndex = 24;
             this.label9.Text = "Час навчання мережі";
             // 
             // Time1
             // 
-            this.Time1.Location = new System.Drawing.Point(662, 125);
+            this.Time1.Location = new System.Drawing.Point(993, 192);
+            this.Time1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Time1.Name = "Time1";
             this.Time1.ReadOnly = true;
-            this.Time1.Size = new System.Drawing.Size(110, 20);
+            this.Time1.Size = new System.Drawing.Size(163, 26);
             this.Time1.TabIndex = 23;
             // 
             // Train
             // 
-            this.Train.Location = new System.Drawing.Point(629, 169);
+            this.Train.Location = new System.Drawing.Point(944, 260);
+            this.Train.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Train.Name = "Train";
-            this.Train.Size = new System.Drawing.Size(176, 39);
+            this.Train.Size = new System.Drawing.Size(264, 60);
             this.Train.TabIndex = 22;
             this.Train.Text = "Навчити мережу";
             this.Train.UseVisualStyleBackColor = true;
@@ -244,9 +256,10 @@
             // 
             // SaveRandom
             // 
-            this.SaveRandom.Location = new System.Drawing.Point(639, 445);
+            this.SaveRandom.Location = new System.Drawing.Point(958, 685);
+            this.SaveRandom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveRandom.Name = "SaveRandom";
-            this.SaveRandom.Size = new System.Drawing.Size(176, 37);
+            this.SaveRandom.Size = new System.Drawing.Size(264, 57);
             this.SaveRandom.TabIndex = 20;
             this.SaveRandom.Text = "Зберегти результати для випадкової вибірки";
             this.SaveRandom.UseVisualStyleBackColor = true;
@@ -254,9 +267,10 @@
             // 
             // SaveTrain
             // 
-            this.SaveTrain.Location = new System.Drawing.Point(230, 445);
+            this.SaveTrain.Location = new System.Drawing.Point(345, 685);
+            this.SaveTrain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveTrain.Name = "SaveTrain";
-            this.SaveTrain.Size = new System.Drawing.Size(176, 37);
+            this.SaveTrain.Size = new System.Drawing.Size(264, 57);
             this.SaveTrain.TabIndex = 19;
             this.SaveTrain.Text = "Зберегти результати для навч. вибірки";
             this.SaveTrain.UseVisualStyleBackColor = true;
@@ -266,25 +280,30 @@
             // 
             this.TrainResults.AllowUserToAddRows = false;
             this.TrainResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TrainResults.Location = new System.Drawing.Point(28, 273);
+            this.TrainResults.Location = new System.Drawing.Point(42, 420);
+            this.TrainResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TrainResults.Name = "TrainResults";
-            this.TrainResults.Size = new System.Drawing.Size(378, 157);
+            this.TrainResults.RowHeadersWidth = 62;
+            this.TrainResults.Size = new System.Drawing.Size(567, 242);
             this.TrainResults.TabIndex = 18;
             // 
             // RandomResults
             // 
             this.RandomResults.AllowUserToAddRows = false;
             this.RandomResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RandomResults.Location = new System.Drawing.Point(437, 273);
+            this.RandomResults.Location = new System.Drawing.Point(656, 420);
+            this.RandomResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.RandomResults.Name = "RandomResults";
-            this.RandomResults.Size = new System.Drawing.Size(378, 157);
+            this.RandomResults.RowHeadersWidth = 62;
+            this.RandomResults.Size = new System.Drawing.Size(567, 242);
             this.RandomResults.TabIndex = 15;
             // 
             // TestRandom
             // 
-            this.TestRandom.Location = new System.Drawing.Point(434, 445);
+            this.TestRandom.Location = new System.Drawing.Point(651, 685);
+            this.TestRandom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TestRandom.Name = "TestRandom";
-            this.TestRandom.Size = new System.Drawing.Size(176, 37);
+            this.TestRandom.Size = new System.Drawing.Size(264, 57);
             this.TestRandom.TabIndex = 14;
             this.TestRandom.Text = "Провести тест на випадкових даних";
             this.TestRandom.UseVisualStyleBackColor = true;
@@ -292,9 +311,10 @@
             // 
             // TestTrain
             // 
-            this.TestTrain.Location = new System.Drawing.Point(25, 445);
+            this.TestTrain.Location = new System.Drawing.Point(38, 685);
+            this.TestTrain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TestTrain.Name = "TestTrain";
-            this.TestTrain.Size = new System.Drawing.Size(176, 37);
+            this.TestTrain.Size = new System.Drawing.Size(264, 57);
             this.TestTrain.TabIndex = 13;
             this.TestTrain.Text = "Протестувати навчальну вибірку";
             this.TestTrain.UseVisualStyleBackColor = true;
@@ -303,76 +323,86 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(28, 228);
+            this.label7.Location = new System.Drawing.Point(42, 351);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(787, 1);
+            this.label7.Size = new System.Drawing.Size(1180, 2);
             this.label7.TabIndex = 12;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(259, 102);
+            this.label6.Location = new System.Drawing.Point(388, 157);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(205, 20);
+            this.label6.Size = new System.Drawing.Size(308, 31);
             this.label6.TabIndex = 11;
             this.label6.Text = "Мінімальна похибка";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(259, 76);
+            this.label5.Location = new System.Drawing.Point(388, 117);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(205, 20);
+            this.label5.Size = new System.Drawing.Size(308, 31);
             this.label5.TabIndex = 10;
             this.label5.Text = "Коефіцієнт Momentum";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(259, 128);
+            this.label4.Location = new System.Drawing.Point(388, 197);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 20);
+            this.label4.Size = new System.Drawing.Size(308, 31);
             this.label4.TabIndex = 9;
             this.label4.Text = "Швидкість навчання мережі";
             // 
             // MinError1
             // 
-            this.MinError1.Location = new System.Drawing.Point(480, 102);
+            this.MinError1.Location = new System.Drawing.Point(720, 157);
+            this.MinError1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinError1.Name = "MinError1";
-            this.MinError1.Size = new System.Drawing.Size(100, 20);
+            this.MinError1.Size = new System.Drawing.Size(148, 26);
             this.MinError1.TabIndex = 8;
             // 
             // Momentum
             // 
-            this.Momentum.Location = new System.Drawing.Point(480, 76);
+            this.Momentum.Location = new System.Drawing.Point(720, 117);
+            this.Momentum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Momentum.Name = "Momentum";
-            this.Momentum.Size = new System.Drawing.Size(100, 20);
+            this.Momentum.Size = new System.Drawing.Size(148, 26);
             this.Momentum.TabIndex = 7;
             // 
             // Learning_rate1
             // 
-            this.Learning_rate1.Location = new System.Drawing.Point(480, 128);
+            this.Learning_rate1.Location = new System.Drawing.Point(720, 197);
+            this.Learning_rate1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Learning_rate1.Name = "Learning_rate1";
-            this.Learning_rate1.Size = new System.Drawing.Size(100, 20);
+            this.Learning_rate1.Size = new System.Drawing.Size(148, 26);
             this.Learning_rate1.TabIndex = 6;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(259, 50);
+            this.label3.Location = new System.Drawing.Point(388, 77);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(205, 20);
+            this.label3.Size = new System.Drawing.Size(308, 31);
             this.label3.TabIndex = 5;
             this.label3.Text = "Кількість нейронів у прихованому шарі";
             // 
             // Hidden_Neurons
             // 
-            this.Hidden_Neurons.Location = new System.Drawing.Point(480, 50);
+            this.Hidden_Neurons.Location = new System.Drawing.Point(720, 77);
+            this.Hidden_Neurons.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Hidden_Neurons.Name = "Hidden_Neurons";
-            this.Hidden_Neurons.Size = new System.Drawing.Size(100, 20);
+            this.Hidden_Neurons.Size = new System.Drawing.Size(148, 26);
             this.Hidden_Neurons.TabIndex = 2;
             // 
             // CreateBackProp
             // 
-            this.CreateBackProp.Location = new System.Drawing.Point(259, 169);
+            this.CreateBackProp.Location = new System.Drawing.Point(388, 260);
+            this.CreateBackProp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CreateBackProp.Name = "CreateBackProp";
-            this.CreateBackProp.Size = new System.Drawing.Size(176, 39);
+            this.CreateBackProp.Size = new System.Drawing.Size(264, 60);
             this.CreateBackProp.TabIndex = 1;
             this.CreateBackProp.Text = "Створити мережу";
             this.CreateBackProp.UseVisualStyleBackColor = true;
@@ -406,19 +436,21 @@
             this.tabPage2.Controls.Add(this.TrainLVQ);
             this.tabPage2.Controls.Add(this.SaveLVQ);
             this.tabPage2.Controls.Add(this.DownLoadLVQ);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(843, 504);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1268, 782);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Мережа Learning Vector Quantization";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // TrainLVQNetwork
             // 
-            this.TrainLVQNetwork.Location = new System.Drawing.Point(629, 169);
+            this.TrainLVQNetwork.Location = new System.Drawing.Point(944, 260);
+            this.TrainLVQNetwork.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TrainLVQNetwork.Name = "TrainLVQNetwork";
-            this.TrainLVQNetwork.Size = new System.Drawing.Size(176, 39);
+            this.TrainLVQNetwork.Size = new System.Drawing.Size(264, 60);
             this.TrainLVQNetwork.TabIndex = 50;
             this.TrainLVQNetwork.Text = "Навчити мережу";
             this.TrainLVQNetwork.UseVisualStyleBackColor = true;
@@ -427,42 +459,47 @@
             // label22
             // 
             this.label22.BackColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(608, 50);
+            this.label22.Location = new System.Drawing.Point(912, 77);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(1, 158);
+            this.label22.Size = new System.Drawing.Size(2, 243);
             this.label22.TabIndex = 49;
             // 
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(18, 15);
+            this.label21.Location = new System.Drawing.Point(27, 23);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(460, 23);
+            this.label21.Size = new System.Drawing.Size(690, 35);
             this.label21.TabIndex = 48;
             this.label21.Text = "Завантажте з файла або створіть мережу:";
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(151, 146);
+            this.label11.Location = new System.Drawing.Point(226, 225);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 48);
+            this.label11.Size = new System.Drawing.Size(94, 74);
             this.label11.TabIndex = 47;
             this.label11.Text = "Зберегти мережу";
             // 
             // label20
             // 
-            this.label20.Location = new System.Drawing.Point(40, 146);
+            this.label20.Location = new System.Drawing.Point(60, 225);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(78, 43);
+            this.label20.Size = new System.Drawing.Size(117, 66);
             this.label20.TabIndex = 46;
             this.label20.Text = "Завантажити мережу";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::CourseWork.Properties.Resources.save_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(154, 74);
+            this.pictureBox3.Location = new System.Drawing.Point(231, 114);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(60, 69);
+            this.pictureBox3.Size = new System.Drawing.Size(90, 106);
             this.pictureBox3.TabIndex = 45;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
@@ -470,18 +507,20 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::CourseWork.Properties.Resources.download;
-            this.pictureBox4.Location = new System.Drawing.Point(40, 74);
+            this.pictureBox4.Location = new System.Drawing.Point(60, 114);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(60, 69);
+            this.pictureBox4.Size = new System.Drawing.Size(90, 106);
             this.pictureBox4.TabIndex = 44;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // SaveGeneratedLVQ
             // 
-            this.SaveGeneratedLVQ.Location = new System.Drawing.Point(639, 445);
+            this.SaveGeneratedLVQ.Location = new System.Drawing.Point(958, 685);
+            this.SaveGeneratedLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveGeneratedLVQ.Name = "SaveGeneratedLVQ";
-            this.SaveGeneratedLVQ.Size = new System.Drawing.Size(176, 37);
+            this.SaveGeneratedLVQ.Size = new System.Drawing.Size(264, 57);
             this.SaveGeneratedLVQ.TabIndex = 41;
             this.SaveGeneratedLVQ.Text = "Зберегти результати для випадкової вибірки";
             this.SaveGeneratedLVQ.UseVisualStyleBackColor = true;
@@ -489,9 +528,10 @@
             // 
             // SaveTrainLVQ
             // 
-            this.SaveTrainLVQ.Location = new System.Drawing.Point(230, 445);
+            this.SaveTrainLVQ.Location = new System.Drawing.Point(345, 685);
+            this.SaveTrainLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveTrainLVQ.Name = "SaveTrainLVQ";
-            this.SaveTrainLVQ.Size = new System.Drawing.Size(176, 37);
+            this.SaveTrainLVQ.Size = new System.Drawing.Size(264, 57);
             this.SaveTrainLVQ.TabIndex = 40;
             this.SaveTrainLVQ.Text = "Зберегти результати для навч. вибірки";
             this.SaveTrainLVQ.UseVisualStyleBackColor = true;
@@ -501,25 +541,30 @@
             // 
             this.TrainResultsLVQ.AllowUserToAddRows = false;
             this.TrainResultsLVQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TrainResultsLVQ.Location = new System.Drawing.Point(28, 273);
+            this.TrainResultsLVQ.Location = new System.Drawing.Point(42, 420);
+            this.TrainResultsLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TrainResultsLVQ.Name = "TrainResultsLVQ";
-            this.TrainResultsLVQ.Size = new System.Drawing.Size(378, 157);
+            this.TrainResultsLVQ.RowHeadersWidth = 62;
+            this.TrainResultsLVQ.Size = new System.Drawing.Size(567, 242);
             this.TrainResultsLVQ.TabIndex = 39;
             // 
             // GeneratedResultsLVQ
             // 
             this.GeneratedResultsLVQ.AllowUserToAddRows = false;
             this.GeneratedResultsLVQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GeneratedResultsLVQ.Location = new System.Drawing.Point(437, 273);
+            this.GeneratedResultsLVQ.Location = new System.Drawing.Point(656, 420);
+            this.GeneratedResultsLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GeneratedResultsLVQ.Name = "GeneratedResultsLVQ";
-            this.GeneratedResultsLVQ.Size = new System.Drawing.Size(378, 157);
+            this.GeneratedResultsLVQ.RowHeadersWidth = 62;
+            this.GeneratedResultsLVQ.Size = new System.Drawing.Size(567, 242);
             this.GeneratedResultsLVQ.TabIndex = 38;
             // 
             // TestGeneratedLVQ
             // 
-            this.TestGeneratedLVQ.Location = new System.Drawing.Point(434, 445);
+            this.TestGeneratedLVQ.Location = new System.Drawing.Point(651, 685);
+            this.TestGeneratedLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TestGeneratedLVQ.Name = "TestGeneratedLVQ";
-            this.TestGeneratedLVQ.Size = new System.Drawing.Size(176, 37);
+            this.TestGeneratedLVQ.Size = new System.Drawing.Size(264, 57);
             this.TestGeneratedLVQ.TabIndex = 37;
             this.TestGeneratedLVQ.Text = "Провести тест на випадкових даних";
             this.TestGeneratedLVQ.UseVisualStyleBackColor = true;
@@ -527,9 +572,10 @@
             // 
             // TestTrainLVQ
             // 
-            this.TestTrainLVQ.Location = new System.Drawing.Point(25, 445);
+            this.TestTrainLVQ.Location = new System.Drawing.Point(38, 685);
+            this.TestTrainLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TestTrainLVQ.Name = "TestTrainLVQ";
-            this.TestTrainLVQ.Size = new System.Drawing.Size(176, 37);
+            this.TestTrainLVQ.Size = new System.Drawing.Size(264, 57);
             this.TestTrainLVQ.TabIndex = 36;
             this.TestTrainLVQ.Text = "Протестувати навчальну вибірку";
             this.TestTrainLVQ.UseVisualStyleBackColor = true;
@@ -537,86 +583,97 @@
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(259, 50);
+            this.label16.Location = new System.Drawing.Point(388, 77);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(205, 20);
+            this.label16.Size = new System.Drawing.Size(308, 31);
             this.label16.TabIndex = 35;
             this.label16.Text = "Швидкість зменшення швидкості навчання";
             // 
             // DecayRateLVQ
             // 
-            this.DecayRateLVQ.Location = new System.Drawing.Point(480, 50);
+            this.DecayRateLVQ.Location = new System.Drawing.Point(720, 77);
+            this.DecayRateLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DecayRateLVQ.Name = "DecayRateLVQ";
-            this.DecayRateLVQ.Size = new System.Drawing.Size(100, 20);
+            this.DecayRateLVQ.Size = new System.Drawing.Size(148, 26);
             this.DecayRateLVQ.TabIndex = 34;
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(259, 76);
+            this.label14.Location = new System.Drawing.Point(388, 117);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(205, 20);
+            this.label14.Size = new System.Drawing.Size(308, 31);
             this.label14.TabIndex = 33;
             this.label14.Text = "Мінімальна похибка";
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(259, 102);
+            this.label15.Location = new System.Drawing.Point(388, 157);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(205, 20);
+            this.label15.Size = new System.Drawing.Size(308, 31);
             this.label15.TabIndex = 32;
             this.label15.Text = "Швидкість навчання мережі";
             // 
             // MinErrorLVQ
             // 
-            this.MinErrorLVQ.Location = new System.Drawing.Point(480, 76);
+            this.MinErrorLVQ.Location = new System.Drawing.Point(720, 117);
+            this.MinErrorLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinErrorLVQ.Name = "MinErrorLVQ";
-            this.MinErrorLVQ.Size = new System.Drawing.Size(100, 20);
+            this.MinErrorLVQ.Size = new System.Drawing.Size(148, 26);
             this.MinErrorLVQ.TabIndex = 31;
             // 
             // LearningRateLVQ
             // 
-            this.LearningRateLVQ.Location = new System.Drawing.Point(480, 102);
+            this.LearningRateLVQ.Location = new System.Drawing.Point(720, 157);
+            this.LearningRateLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.LearningRateLVQ.Name = "LearningRateLVQ";
-            this.LearningRateLVQ.Size = new System.Drawing.Size(100, 20);
+            this.LearningRateLVQ.Size = new System.Drawing.Size(148, 26);
             this.LearningRateLVQ.TabIndex = 30;
             // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(237, 50);
+            this.label12.Location = new System.Drawing.Point(356, 77);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(1, 158);
+            this.label12.Size = new System.Drawing.Size(2, 243);
             this.label12.TabIndex = 28;
             // 
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(28, 228);
+            this.label13.Location = new System.Drawing.Point(42, 351);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(787, 1);
+            this.label13.Size = new System.Drawing.Size(1180, 2);
             this.label13.TabIndex = 27;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(659, 102);
+            this.label10.Location = new System.Drawing.Point(988, 157);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 15);
+            this.label10.Size = new System.Drawing.Size(182, 23);
             this.label10.TabIndex = 26;
             this.label10.Text = "Час навчання мережі";
             // 
             // TimeLVQ
             // 
-            this.TimeLVQ.Location = new System.Drawing.Point(662, 125);
+            this.TimeLVQ.Location = new System.Drawing.Point(993, 192);
+            this.TimeLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TimeLVQ.Name = "TimeLVQ";
             this.TimeLVQ.ReadOnly = true;
-            this.TimeLVQ.Size = new System.Drawing.Size(110, 20);
+            this.TimeLVQ.Size = new System.Drawing.Size(163, 26);
             this.TimeLVQ.TabIndex = 25;
             // 
             // TrainLVQ
             // 
-            this.TrainLVQ.Location = new System.Drawing.Point(259, 169);
+            this.TrainLVQ.Location = new System.Drawing.Point(388, 260);
+            this.TrainLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TrainLVQ.Name = "TrainLVQ";
-            this.TrainLVQ.Size = new System.Drawing.Size(176, 39);
+            this.TrainLVQ.Size = new System.Drawing.Size(264, 60);
             this.TrainLVQ.TabIndex = 24;
             this.TrainLVQ.Text = "Створити мережу";
             this.TrainLVQ.UseVisualStyleBackColor = true;
@@ -624,9 +681,10 @@
             // 
             // SaveLVQ
             // 
-            this.SaveLVQ.Location = new System.Drawing.Point(452, 304);
+            this.SaveLVQ.Location = new System.Drawing.Point(678, 468);
+            this.SaveLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SaveLVQ.Name = "SaveLVQ";
-            this.SaveLVQ.Size = new System.Drawing.Size(176, 32);
+            this.SaveLVQ.Size = new System.Drawing.Size(264, 49);
             this.SaveLVQ.TabIndex = 23;
             this.SaveLVQ.Text = "Зберегти мережу у файл";
             this.SaveLVQ.UseVisualStyleBackColor = true;
@@ -635,9 +693,10 @@
             // 
             // DownLoadLVQ
             // 
-            this.DownLoadLVQ.Location = new System.Drawing.Point(452, 289);
+            this.DownLoadLVQ.Location = new System.Drawing.Point(678, 445);
+            this.DownLoadLVQ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DownLoadLVQ.Name = "DownLoadLVQ";
-            this.DownLoadLVQ.Size = new System.Drawing.Size(176, 32);
+            this.DownLoadLVQ.Size = new System.Drawing.Size(264, 49);
             this.DownLoadLVQ.TabIndex = 0;
             this.DownLoadLVQ.Text = "Завантажити мережу з файла";
             this.DownLoadLVQ.UseVisualStyleBackColor = true;
@@ -646,24 +705,29 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(430, 19);
+            this.label8.Location = new System.Drawing.Point(645, 29);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(189, 20);
+            this.label8.Size = new System.Drawing.Size(284, 31);
             this.label8.TabIndex = 17;
             this.label8.Text = "Введіть кількість випадкових даних";
+            this.label8.Visible = false;
             // 
             // testAmountText
             // 
-            this.testAmountText.Location = new System.Drawing.Point(433, 39);
+            this.testAmountText.Location = new System.Drawing.Point(650, 60);
+            this.testAmountText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.testAmountText.Name = "testAmountText";
-            this.testAmountText.Size = new System.Drawing.Size(186, 20);
+            this.testAmountText.Size = new System.Drawing.Size(277, 26);
             this.testAmountText.TabIndex = 16;
+            this.testAmountText.Visible = false;
             // 
             // DownloadFromDB
             // 
-            this.DownloadFromDB.Location = new System.Drawing.Point(56, 19);
+            this.DownloadFromDB.Location = new System.Drawing.Point(84, 29);
+            this.DownloadFromDB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DownloadFromDB.Name = "DownloadFromDB";
-            this.DownloadFromDB.Size = new System.Drawing.Size(174, 39);
+            this.DownloadFromDB.Size = new System.Drawing.Size(261, 60);
             this.DownloadFromDB.TabIndex = 1;
             this.DownloadFromDB.Text = "Завантажити дані ";
             this.DownloadFromDB.UseVisualStyleBackColor = true;
@@ -671,11 +735,12 @@
             // 
             // GenerateRandom
             // 
-            this.GenerateRandom.Location = new System.Drawing.Point(646, 19);
+            this.GenerateRandom.Location = new System.Drawing.Point(969, 29);
+            this.GenerateRandom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GenerateRandom.Name = "GenerateRandom";
-            this.GenerateRandom.Size = new System.Drawing.Size(174, 40);
+            this.GenerateRandom.Size = new System.Drawing.Size(261, 62);
             this.GenerateRandom.TabIndex = 4;
-            this.GenerateRandom.Text = "Згенерувати тест";
+            this.GenerateRandom.Text = "Завантажити тест";
             this.GenerateRandom.UseVisualStyleBackColor = true;
             this.GenerateRandom.Click += new System.EventHandler(this.GenerateRandom_Click);
             // 
@@ -719,14 +784,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 637);
+            this.ClientSize = new System.Drawing.Size(1312, 980);
             this.Controls.Add(this.GenerateRandom);
             this.Controls.Add(this.DownloadFromDB);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.testAmountText);
             this.Controls.Add(this.label8);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Проект Гавриляка Дмитра";
             this.tabControl1.ResumeLayout(false);
