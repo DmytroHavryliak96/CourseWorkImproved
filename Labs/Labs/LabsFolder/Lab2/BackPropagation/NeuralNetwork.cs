@@ -314,8 +314,10 @@ namespace NeuralNetwork
             int amountOfPatterns = patterns.GetUpperBound(0) + 1;
             Random rnd = new Random();
             double error;
+            int iterations = 0;
             do
             {
+
                 List<BackPropagationContainer> TrainingSet = new List<BackPropagationContainer>();
 
                 for (int k = 0; k < amountOfPatterns; k++)
@@ -335,7 +337,8 @@ namespace NeuralNetwork
                     TrainingSet.RemoveAt(index);
                 }
                 error /= amountOfPatterns;
-            } while (error > min_error);
+                iterations++;
+            } while (error > min_error && iterations <= 100000);
 
         }
 
@@ -883,14 +886,45 @@ namespace NeuralNetwork
         // Ініціалізація ваг відповідно до навчальної вибірки
         private void InitializeWeights()
         {
+            List<int> indexes = new List<int>();
+
+            var sequence = mTarget.Select((cluster, index) => new { answer = cluster, index = index });
+
+            for(int i = 0; i < NUMBER_OF_CLUSTERS; i++)
+            {
+                var result = sequence.Where(item => item.answer == i).Take(3)
+                    .Select(item => item.index);
+
+                if(result == null || !result.Any())
+                {
+                    indexes.AddRange(new int[] { -1, -1, -1 });
+                    continue;
+                }
+
+                indexes.AddRange(result);
+            }
+
             var rnd = new Random();
             weights = new double[NUMBER_OF_CLUSTERS * 3][];
             for (int i = 0; i < NUMBER_OF_CLUSTERS * 3; i++)
                 weights[i] = new double[VEC_LEN];
 
             for (int i = 0; i < NUMBER_OF_CLUSTERS * 3; i++)
+            {
+                bool flag = true;
+
+                if (indexes[i] == -1)
+                    flag = false;
+
                 for (int j = 0; j < VEC_LEN; j++)
-                    weights[i][j] = rnd.NextDouble(); /*mPattern[i][j]*/;
+                {
+                    if (flag)
+                        weights[i][j] = mPattern[indexes[i]][j];
+                    else
+                        weights[i][j] = rnd.NextDouble();
+                }
+            }
+                    
             
         }
 
@@ -927,7 +961,7 @@ namespace NeuralNetwork
                 amount++;
                 // Зменшуємо швидкість навчання
                 alpha = DECAY_RATE * alpha;
-            }while (error > MIN_ERROR && iterations <= 100000);
+            }while ( iterations <= 300000 && error > MIN_ERROR);
             Console.WriteLine("amount of cycles {0}", amount);
         }
 
