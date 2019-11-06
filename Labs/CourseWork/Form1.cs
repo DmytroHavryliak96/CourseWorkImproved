@@ -113,7 +113,7 @@ namespace CourseWork
             {
                 string fileName = openCsvFile.FileName;
                 reader = new CsvReader(fileName, CultureInfo.CurrentUICulture.Name);
-                MessageBox.Show(fileName);
+                MessageBox.Show(fileName + " завантажений");
 
 
                 try
@@ -282,7 +282,7 @@ namespace CourseWork
             {
                 string fileName = openCsvFile.FileName;
                 reader = new CsvReader(fileName, CultureInfo.CurrentUICulture.Name);
-                MessageBox.Show(fileName);
+                MessageBox.Show(fileName + " завантажений");
 
                 try
                 {
@@ -306,7 +306,7 @@ namespace CourseWork
                     return;
                 }
 
-                MessageBox.Show("Тестова випадкова вибірка згенерована");
+               // MessageBox.Show("Тестова випадкова вибірка згенерована");
             }
             else return; 
             //TestAmount = Convert.ToInt32(this.testAmountText.Text); 
@@ -824,6 +824,19 @@ namespace CourseWork
             return result;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BPNErrorCollection bpnError = null;
+            LVQErrorCollection lvqError = null;
 
+            if (bpn != null)
+                bpnError = (BPNErrorCollection)bpn.errorService;
+            if (lvq != null)
+                lvqError = (LVQErrorCollection)lvq.errorService;
+
+            ErrorGraphForm eForm = new ErrorGraphForm(lvqError, bpnError);
+
+            eForm.ShowDialog();
+        }
     }
 }

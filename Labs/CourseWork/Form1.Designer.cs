@@ -96,6 +96,7 @@
             this.saveFileDialog4 = new System.Windows.Forms.SaveFileDialog();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Graph = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -261,7 +262,7 @@
             this.SaveRandom.Name = "SaveRandom";
             this.SaveRandom.Size = new System.Drawing.Size(264, 57);
             this.SaveRandom.TabIndex = 20;
-            this.SaveRandom.Text = "Зберегти результати для випадкової вибірки";
+            this.SaveRandom.Text = "Зберегти результати для тестової вибірки";
             this.SaveRandom.UseVisualStyleBackColor = true;
             this.SaveRandom.Click += new System.EventHandler(this.SaveRandom_Click);
             // 
@@ -305,7 +306,7 @@
             this.TestRandom.Name = "TestRandom";
             this.TestRandom.Size = new System.Drawing.Size(264, 57);
             this.TestRandom.TabIndex = 14;
-            this.TestRandom.Text = "Провести тест на випадкових даних";
+            this.TestRandom.Text = "Перевірка тестової вибірки";
             this.TestRandom.UseVisualStyleBackColor = true;
             this.TestRandom.Click += new System.EventHandler(this.TestRandom_Click);
             // 
@@ -735,7 +736,7 @@
             // 
             // GenerateRandom
             // 
-            this.GenerateRandom.Location = new System.Drawing.Point(969, 29);
+            this.GenerateRandom.Location = new System.Drawing.Point(666, 29);
             this.GenerateRandom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GenerateRandom.Name = "GenerateRandom";
             this.GenerateRandom.Size = new System.Drawing.Size(261, 62);
@@ -782,11 +783,23 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Graph
+            // 
+            this.Graph.Location = new System.Drawing.Point(966, 29);
+            this.Graph.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Graph.Name = "Graph";
+            this.Graph.Size = new System.Drawing.Size(261, 62);
+            this.Graph.TabIndex = 18;
+            this.Graph.Text = "Переглянути графік";
+            this.Graph.UseVisualStyleBackColor = true;
+            this.Graph.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 980);
+            this.Controls.Add(this.Graph);
             this.Controls.Add(this.GenerateRandom);
             this.Controls.Add(this.DownloadFromDB);
             this.Controls.Add(this.tabControl1);
@@ -883,6 +896,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button TrainLVQNetwork;
+        private System.Windows.Forms.Button Graph;
     }
 }
 

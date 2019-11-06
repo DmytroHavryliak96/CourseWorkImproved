@@ -110,6 +110,7 @@ namespace NeuralNetwork
         private double[][][] previousWeightDelta; // дельта попередньої ваги
         private XmlDocument doc = null; // документ типу xml
         public bool loaded = true;
+        public IErrorCollection errorService;
 
 
         #endregion
@@ -183,6 +184,8 @@ namespace NeuralNetwork
                     }
                 }
             }
+
+            errorService = new BPNErrorCollection();
         }
 
         public BackPropagationNetwork(string filepath)
@@ -191,6 +194,7 @@ namespace NeuralNetwork
 
             Load(filepath);
 
+            errorService = new BPNErrorCollection();
             //loaded = true;
         }
 
@@ -338,7 +342,11 @@ namespace NeuralNetwork
                 }
                 error /= amountOfPatterns;
                 iterations++;
-            } while (error > min_error && iterations <= 100000);
+
+                if (errorService.CheckIteration(iterations))
+                    errorService.AddItem(iterations, error);
+
+            } while (error > min_error && iterations <= 300000);
 
         }
 
@@ -829,6 +837,8 @@ namespace NeuralNetwork
 
         public string Name = "Default";
         public Random rnd = new Random();
+
+        public IErrorCollection errorService;
         
         // Конструктор
         public LVQ(double[][] patterns, int[] clusters, double min_error, double alpha, double decay_rate, int num_of_clusters)
@@ -847,6 +857,8 @@ namespace NeuralNetwork
             
             distances = new double[num_of_clusters * 3];
             InitializeWeights();
+
+            errorService = new LVQErrorCollection();
         }  
 
         public LVQ(string filepath)
@@ -854,6 +866,7 @@ namespace NeuralNetwork
             //loaded = false;
 
             Load(filepath);
+            errorService = new LVQErrorCollection();
 
             //loaded = true;
         }
@@ -961,8 +974,14 @@ namespace NeuralNetwork
                 amount++;
                 // Зменшуємо швидкість навчання
                 alpha = DECAY_RATE * alpha;
-            }while ( iterations <= 300000 && error > MIN_ERROR);
-            Console.WriteLine("amount of cycles {0}", amount);
+
+                if (errorService.CheckIteration(iterations))
+                    errorService.AddItem(iterations, error);
+
+            }while ( iterations <= 100000 && error > MIN_ERROR);
+            //Console.WriteLine("amount of cycles {0}", amount);
+
+
         }
 
         // Оновлюємо ваги
@@ -1353,6 +1372,80 @@ namespace NeuralNetwork
             val2 = stddev * t * v + mean;
 
 
+        }
+    }
+
+    public interface IErrorCollection
+    {
+        void AddItem(int iteration, double error);
+
+        bool CheckIteration(int iteration);
+
+        Dictionary<int, double> GetCollection();
+
+        string Name { get; }
+    }
+
+    public class BPNErrorCollection : IErrorCollection
+    {
+        private const int ITERATION = 10000;
+
+        public Dictionary<int, double> Errors { get; private set; }
+        public string Name { get; private set; }
+
+        public BPNErrorCollection()
+        {
+            Errors = new Dictionary<int, double>();
+            Name = "BPN";
+        }
+
+        public void AddItem(int iteration, double error)
+        {
+            Errors.Add(iteration, error);
+        }
+
+        public bool CheckIteration(int iteration)
+        {
+            if (ITERATION % iteration == 0)
+                return true;
+            return false;
+        }
+
+        public Dictionary<int, double> GetCollection()
+        {
+            return Errors;
+        }
+    }
+
+    public class LVQErrorCollection : IErrorCollection
+    {
+        private const int ITERATION = 10000;
+        
+        public Dictionary<int, double> Errors { get; private set; }
+
+        public string Name { get; }
+
+        public LVQErrorCollection()
+        {
+            Errors = new Dictionary<int, double>();
+            Name = "LVQ";
+        }
+
+        public void AddItem(int iteration, double error)
+        {
+            Errors.Add(iteration, error);
+        }
+
+        public bool CheckIteration(int iteration)
+        {
+            if (ITERATION % iteration == 0)
+                return true;
+            return false;
+        }
+
+        public Dictionary<int, double> GetCollection()
+        {
+            return Errors;
         }
     }
 }

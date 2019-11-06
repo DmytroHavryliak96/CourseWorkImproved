@@ -53,3 +53,4 @@ D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.csproj.GenerateR
 D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.csproj.CopyComplete
 D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.exe
 D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.pdb
+D:\Projects\neuroComUpdate\Labs\CourseWork\obj\Debug\CourseWork.ErrorGraphForm.resources
