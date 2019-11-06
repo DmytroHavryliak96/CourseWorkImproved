@@ -1388,7 +1388,7 @@ namespace NeuralNetwork
 
     public class BPNErrorCollection : IErrorCollection
     {
-        private const int ITERATION = 10000;
+        private const int ITERATION = 1000;
 
         public Dictionary<int, double> Errors { get; private set; }
         public string Name { get; private set; }
@@ -1406,7 +1406,7 @@ namespace NeuralNetwork
 
         public bool CheckIteration(int iteration)
         {
-            if (ITERATION % iteration == 0)
+            if (iteration % ITERATION == 0)
                 return true;
             return false;
         }
@@ -1419,7 +1419,7 @@ namespace NeuralNetwork
 
     public class LVQErrorCollection : IErrorCollection
     {
-        private const int ITERATION = 10000;
+        private const int ITERATION = 5;
         
         public Dictionary<int, double> Errors { get; private set; }
 
@@ -1438,7 +1438,7 @@ namespace NeuralNetwork
 
         public bool CheckIteration(int iteration)
         {
-            if (ITERATION % iteration == 0)
+            if (iteration % ITERATION == 0)
                 return true;
             return false;
         }

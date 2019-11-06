@@ -523,7 +523,7 @@
             this.SaveGeneratedLVQ.Name = "SaveGeneratedLVQ";
             this.SaveGeneratedLVQ.Size = new System.Drawing.Size(264, 57);
             this.SaveGeneratedLVQ.TabIndex = 41;
-            this.SaveGeneratedLVQ.Text = "Зберегти результати для випадкової вибірки";
+            this.SaveGeneratedLVQ.Text = "Зберегти результати для тестової вибірки";
             this.SaveGeneratedLVQ.UseVisualStyleBackColor = true;
             this.SaveGeneratedLVQ.Click += new System.EventHandler(this.SaveGeneratedLVQ_Click);
             // 
@@ -567,7 +567,7 @@
             this.TestGeneratedLVQ.Name = "TestGeneratedLVQ";
             this.TestGeneratedLVQ.Size = new System.Drawing.Size(264, 57);
             this.TestGeneratedLVQ.TabIndex = 37;
-            this.TestGeneratedLVQ.Text = "Провести тест на випадкових даних";
+            this.TestGeneratedLVQ.Text = "Перевірка тестової вибірки";
             this.TestGeneratedLVQ.UseVisualStyleBackColor = true;
             this.TestGeneratedLVQ.Click += new System.EventHandler(this.TestGeneratedLVQ_Click);
             // 
@@ -790,7 +790,7 @@
             this.Graph.Name = "Graph";
             this.Graph.Size = new System.Drawing.Size(261, 62);
             this.Graph.TabIndex = 18;
-            this.Graph.Text = "Переглянути графік";
+            this.Graph.Text = "Переглянути графіки";
             this.Graph.UseVisualStyleBackColor = true;
             this.Graph.Click += new System.EventHandler(this.button1_Click);
             // 

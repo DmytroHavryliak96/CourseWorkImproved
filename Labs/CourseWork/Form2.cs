@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CourseWork
 {
@@ -26,24 +27,29 @@ namespace CourseWork
 
             this.chart1.ChartAreas[0].AxisX.Title = "ітерація";
             this.chart1.ChartAreas[0].AxisY.Title = "похибка";
+
+            this.chart2.ChartAreas[0].AxisX.Title = "ітерація";
+            this.chart2.ChartAreas[0].AxisY.Title = "похибка";
+
+            DataBinding();
         }
 
         private void DataBinding()
         {
             if (bpn != null)
-                Bind(bpn);
+                Bind(bpn, this.chart1);
             if (lvq != null)
-                Bind(lvq);
+                Bind(lvq, this.chart2);
 
            
         }
 
-        private void Bind(IErrorCollection collection)
+        private void Bind(IErrorCollection collection, Chart chart)
         {
             var data = collection.GetCollection();
 
             foreach(var item in data)
-                this.chart1.Series[collection.Name].Points.AddXY(item.Key, item.Value);
+                chart.Series[collection.Name].Points.AddXY(item.Key, item.Value);
             
         }
 
