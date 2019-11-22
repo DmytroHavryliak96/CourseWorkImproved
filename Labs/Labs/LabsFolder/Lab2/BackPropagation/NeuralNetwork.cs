@@ -371,6 +371,25 @@ namespace NeuralNetwork
             }
         }
 
+        public int getClusterUpdate(double[] input, double[] output)
+        {
+            Run(ref input, out output);
+
+            double max = output[0];
+            int cluster = 0;
+
+            for(int i = 0; i < output.Length; i++)
+            {
+                if (max < output[i])
+                {
+                    max = output[i];
+                    cluster = i;
+                }
+            }
+
+            return (cluster + 1);
+        }
+
 
         // Зберігання ваг
         public void Save(string filepath)

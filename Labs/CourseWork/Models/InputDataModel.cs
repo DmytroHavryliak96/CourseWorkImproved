@@ -15,5 +15,7 @@ namespace CourseWork.Models
 		public int Parameters { get; set; }
 		public double[][] Inputs { get; set; }
 		public double[][] Answers { get; set; }
+
+        public double[][] BpnAnswers { get; set; }
 	}
 }

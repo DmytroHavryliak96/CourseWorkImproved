@@ -76,7 +76,8 @@ namespace CourseWork.Services
 
 			model.NumOfClusters = NuOfClusters;
 			model.Inputs = inputs;
-			model.Answers = answers;
+            model.Answers = answers;
+			model.BpnAnswers = TransformAnswers(answers);
 			model.Parameters = parameters;
 		}
 
@@ -99,6 +100,27 @@ namespace CourseWork.Services
 			return input;
 		}
 
+        private double[][] TransformAnswers(double[][] answers)
+        {
+            double[][] update = new double[answers.GetUpperBound(0)+1][];
+
+            for(int i = 0; i < answers.GetUpperBound(0) + 1; i++)
+            {
+                update[i] = new double[NuOfClusters];
+
+                for(int j = 0; j < update[i].Length; j++)
+                {
+                    update[i][j] = 0.0;
+                }
+
+                update[i][(int)answers[i][0] - 1] = 1; 
+
+            }
+
+            return update;
+        }
+
 
 	}
+
 }

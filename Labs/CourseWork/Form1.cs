@@ -53,8 +53,8 @@ namespace CourseWork
         int[] layerSizes; // кількість шарів та нейронів у шарах
         // активаційні функції для кожного шару
         TransferFunction[] TFuncs = new TransferFunction[3] {TransferFunction.None,
-                                                               TransferFunction.BipolarSigmoid,
-                                                               TransferFunction.BipolarSigmoid};
+                                                               TransferFunction.Sigmoid,
+                                                               TransferFunction.Sigmoid};
         double LEARNING_RATE1; // швидкість навчання 
         double MOMENTUM; // коефіцієнт для навчання
         double MIN_ERROR; // мінімальна похибка для навчання
@@ -68,6 +68,7 @@ namespace CourseWork
         // масиви параметрів та відповідей
         double[][] inputs;
         double[][] answers;
+        double[][] bpnAnswers;
 
         // Випадкова тестова вибірка
         double[][] testArray;
@@ -127,6 +128,7 @@ namespace CourseWork
 
                     inputs = model.Inputs;
                     answers = model.Answers;
+                    bpnAnswers = model.BpnAnswers;
 
 
                 }
@@ -354,7 +356,7 @@ namespace CourseWork
                 return;
             }
          
-            layerSizes = new int[3]{ PARAMETERS, hidden, 1 }; // кількість шарів та нейронів у шарах
+            layerSizes = new int[3]{ PARAMETERS, hidden, NUM_OF_CLUSTERS }; // кількість шарів та нейронів у шарах
 
             bpn = new BackPropagationNetwork(layerSizes, TFuncs);
             MessageBox.Show("Мережу BackPropagation створено");
@@ -373,7 +375,7 @@ namespace CourseWork
             sWatch.Reset();
             sWatch.Start();
             
-            bpn.TrainNetwork(inputs, Normalize.FormAnswersBackPropagation(answers), MIN_ERROR, LEARNING_RATE1, MOMENTUM);
+            bpn.TrainNetwork(inputs, /*Normalize.FormAnswersBackPropagation(*/bpnAnswers/*)*/, MIN_ERROR, LEARNING_RATE1, MOMENTUM);
             sWatch.Stop();
             Cursor.Current = Cursors.Arrow;
 
@@ -454,7 +456,7 @@ namespace CourseWork
                     {
                         row[k + 1] = inputs[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = bpn.getCluster(inputs[i], output);
+                    row["Кластер"] = bpn.getClusterUpdate(inputs[i], output);
                     ResultTrainBackPropagation.Rows.Add(row);
                 }
                 
@@ -524,7 +526,7 @@ namespace CourseWork
                     {
                         row[k + 1] = testArray[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = bpn.getCluster(testArray[i], output);
+                    row["Кластер"] = bpn.getClusterUpdate(testArray[i], output);
                     ResultTestBackPropagation.Rows.Add(row);
                 }
             }
