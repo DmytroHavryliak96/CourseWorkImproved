@@ -319,6 +319,10 @@ namespace NeuralNetwork
             Random rnd = new Random();
             double error;
             int iterations = 0;
+
+
+            errorService.ClearCollection();
+
             do
             {
 
@@ -836,6 +840,8 @@ namespace NeuralNetwork
 
     public class LVQ
     {
+        private const int NumOfEpochs = 1000;
+
         private int NUMBER_OF_CLUSTERS; // кількість кластерів = кількості нейронів у вихідному шарі
         private int VEC_LEN; // довжина навчального вектора (кількість параметрів)
         private int TRAINING_PATTERNS; // кількість навчальних векторів
@@ -967,10 +973,17 @@ namespace NeuralNetwork
             double error;
             int amount = 0;
             int iterations = 0;
+
+            double er = 0;
+
+            errorService.ClearCollection();
+
             do 
             {
                 iterations++;
                 error = 0.0;
+
+                alpha = alpha * (1.0 - (double)(iterations / NumOfEpochs));
 
                 // Створення навчальної вибірки
                 List<LVQContainer> TrainingSet = new List<LVQContainer>();
@@ -991,13 +1004,11 @@ namespace NeuralNetwork
                     TrainingSet.RemoveAt(index);
                 }
                 amount++;
-                // Зменшуємо швидкість навчання
-                alpha = DECAY_RATE * alpha;
-
+               
                 if (errorService.CheckIteration(iterations))
                     errorService.AddItem(iterations, error);
 
-            }while ( iterations <= 100000 && error > MIN_ERROR);
+            }while ( iterations <= NumOfEpochs && error > MIN_ERROR);
             //Console.WriteLine("amount of cycles {0}", amount);
 
 
@@ -1046,7 +1057,7 @@ namespace NeuralNetwork
             // знаходимо величину зміни ваг
             for (int i = 0; i < VEC_LEN; i++)
             {
-                distance += Math.Abs(previousWeight2[i] - weights[winner][i]);
+                distance += Math.Pow(previousWeight2[i] - weights[winner][i], 2);
             }
 
             //distance;
@@ -1402,6 +1413,8 @@ namespace NeuralNetwork
 
         Dictionary<int, double> GetCollection();
 
+        void ClearCollection();
+
         string Name { get; }
     }
 
@@ -1434,11 +1447,16 @@ namespace NeuralNetwork
         {
             return Errors;
         }
+
+        public void ClearCollection()
+        {
+            Errors.Clear();
+        }
     }
 
     public class LVQErrorCollection : IErrorCollection
     {
-        private const int ITERATION = 5;
+        private const int ITERATION = 50;
         
         public Dictionary<int, double> Errors { get; private set; }
 
@@ -1465,6 +1483,11 @@ namespace NeuralNetwork
         public Dictionary<int, double> GetCollection()
         {
             return Errors;
+        }
+
+        public void ClearCollection()
+        {
+            Errors.Clear();
         }
     }
 }
