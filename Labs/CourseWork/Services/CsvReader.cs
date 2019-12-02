@@ -13,7 +13,7 @@ namespace CourseWork.Services
 	{
 		public string FilePath { get; private set; }
 		private const int fieldsCount = 6;
-		private const int NuOfClusters = 4;
+		private const int NuOfClusters = 3;
 		private const int parameters = 5;
         public string CurrentUICulture { get; private set; }
 	

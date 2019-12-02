@@ -76,6 +76,11 @@ namespace CourseWork
 
         int testPatterns;
 
+        double bpnTrainAccuracy;
+        double bpnTestAccuracy;
+        double lvqTrainAccuracy;
+        double lvqTestAccuracy;
+
         // мережа BackPropagation
         BackPropagationNetwork bpn = null;
 
@@ -395,7 +400,9 @@ namespace CourseWork
 
             bool resultLearning_rate2 = Double.TryParse(LearningRateLVQ.Text, out LEARNING_RATE2);
             bool resultMin_error2 = Double.TryParse(MinErrorLVQ.Text, out MIN_ERROR2);
-            bool resultDecay_rate = Double.TryParse(DecayRateLVQ.Text, out DECAY_RATE);
+            bool resultDecay_rate = true;//Double.TryParse(DecayRateLVQ.Text, out DECAY_RATE);
+
+            DECAY_RATE = 0.1;
 
             if (resultLearning_rate2 == false || resultMin_error2 == false || resultDecay_rate == false)
             {
@@ -448,6 +455,8 @@ namespace CourseWork
 
                 ResultTrainBackPropagation.Columns.Add("Кластер");
 
+                int matches = 0;
+
                 for (int i = 0; i < TRAINING_PATTERNS; i++)
                 {
                     DataRow row = ResultTrainBackPropagation.NewRow();
@@ -456,9 +465,17 @@ namespace CourseWork
                     {
                         row[k + 1] = inputs[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = bpn.getClusterUpdate(inputs[i], output);
+                    int netAnswer = bpn.getClusterUpdate(inputs[i], output);
+                    row["Кластер"] = netAnswer;
+
+                    if (netAnswer == answers[i][0])
+                        matches++;
+
+                    
                     ResultTrainBackPropagation.Rows.Add(row);
                 }
+
+                bpnTrainAccuracy = matches / (double)TRAINING_PATTERNS * 100;
                 
             }
 
@@ -483,6 +500,8 @@ namespace CourseWork
 
                 ResultTrainLVQ.Columns.Add("Кластер");
 
+                int matches = 0;
+
                 for (int i = 0; i < TRAINING_PATTERNS; i++)
                 {
                     DataRow row = ResultTrainLVQ.NewRow();
@@ -491,9 +510,18 @@ namespace CourseWork
                     {
                         row[k + 1] = inputs[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = lvq.getCluster(inputs[i]);
+
+                    int netAnswer = lvq.getCluster(inputs[i]);
+
+                    row["Кластер"] = netAnswer;
+
+                    if (netAnswer == answers[i][0])
+                        matches++;
+
                     ResultTrainLVQ.Rows.Add(row);
                 }
+
+                lvqTrainAccuracy = matches / (double)TRAINING_PATTERNS * 100;
 
             }
 
@@ -518,6 +546,8 @@ namespace CourseWork
 
                 ResultTestBackPropagation.Columns.Add("Кластер");
 
+                int matches = 0;
+
                 for (int i = 0; i < testPatterns; i++)
                 {
                     DataRow row = ResultTestBackPropagation.NewRow();
@@ -526,9 +556,18 @@ namespace CourseWork
                     {
                         row[k + 1] = testArray[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = bpn.getClusterUpdate(testArray[i], output);
+
+                    int netAnswer = bpn.getClusterUpdate(testArray[i], output);
+                    
+                    row["Кластер"] = netAnswer;
+
+                    if (netAnswer == answers[i][0])
+                        matches++;
+
                     ResultTestBackPropagation.Rows.Add(row);
                 }
+
+                bpnTestAccuracy = matches / (double)TRAINING_PATTERNS * 100;
             }
         }
 
@@ -551,6 +590,8 @@ namespace CourseWork
 
                 ResultTestLVQ.Columns.Add("Кластер");
 
+                int matches = 0;
+
                 for (int i = 0; i < testPatterns; i++)
                 {
                     DataRow row = ResultTestLVQ.NewRow();
@@ -559,9 +600,18 @@ namespace CourseWork
                     {
                         row[k + 1] = testArray[i][k].ToString("G", CultureInfo.InvariantCulture);
                     }
-                    row["Кластер"] = lvq.getCluster(testArray[i]);
+
+                    int netAnswer = lvq.getCluster(testArray[i]);
+
+                    row["Кластер"] = netAnswer;
+
+                    if (netAnswer == answers[i][0])
+                        matches++;
+
                     ResultTestLVQ.Rows.Add(row);
                 }
+
+                lvqTestAccuracy = matches / (double)TRAINING_PATTERNS * 100;
             }
         }
 
@@ -588,7 +638,9 @@ namespace CourseWork
                 {
                     text += ParametersNames[i] + separator;
                 }
-                text += "network answer" + separator + "real value";
+
+                string accuracy = "accuracy=" + bpnTrainAccuracy.ToString();
+                text += "network answer" + separator + "real value" + separator + accuracy;
                 text += Environment.NewLine;
 
                 foreach (DataGridViewRow row in TrainResults.Rows)
@@ -602,6 +654,8 @@ namespace CourseWork
                     }
                     text += answers[row.Index][0].ToString();
                     text += Environment.NewLine;
+
+                    
                 }
                 File.AppendAllText(filepath, text);
                 MessageBox.Show("Результати навчальної вибірки збережено");
@@ -634,7 +688,10 @@ namespace CourseWork
                 {
                     text += ParametersNames[i] + separator;
                 }
-                text += "network answer" + separator + "real value";
+
+                string accuracy = "accuracy=" + lvqTrainAccuracy.ToString();
+                text += "network answer" + separator + "real value" + separator + accuracy;
+                
                 text += Environment.NewLine;
 
                 foreach (DataGridViewRow row in TrainResultsLVQ.Rows)
@@ -679,7 +736,10 @@ namespace CourseWork
                 {
                     text += ParametersNames[i] + separator;
                 }
-                text += "network answer" + separator + "real value";
+
+                string accuracy = "accuracy=" + bpnTestAccuracy.ToString();
+                text += "network answer" + separator + "real value" + separator + accuracy;
+                
                 text += Environment.NewLine;
 
                 foreach (DataGridViewRow row in RandomResults.Rows)
@@ -724,7 +784,10 @@ namespace CourseWork
                 {
                     text += ParametersNames[i] + separator;
                 }
-                text += "network answer" + separator + "real value";
+                
+                string accuracy = "accuracy=" + lvqTestAccuracy.ToString();
+                text += "network answer" + separator + "real value" + separator + accuracy;
+
                 text += Environment.NewLine;
 
                 foreach (DataGridViewRow row in GeneratedResultsLVQ.Rows)

@@ -1033,10 +1033,7 @@ namespace NeuralNetwork
                     cluster = 1;
                 else
                 {
-                    if (winner >= 6 && winner < 9)
-                        cluster = 2;
-                    else
-                        cluster = 3;
+                    cluster = 2;
                 }    
             }
            
@@ -1079,10 +1076,7 @@ namespace NeuralNetwork
                     cluster = 1;
                 else
                 {
-                    if (winner >= 6 && winner < 9)
-                        cluster = 2;
-                    else
-                        cluster = 3;
+                    cluster = 2;
                 } 
             }
 

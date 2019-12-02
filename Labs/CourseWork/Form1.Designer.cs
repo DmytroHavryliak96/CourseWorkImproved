@@ -590,6 +590,7 @@
             this.label16.Size = new System.Drawing.Size(308, 31);
             this.label16.TabIndex = 35;
             this.label16.Text = "Швидкість зменшення швидкості навчання";
+            this.label16.Visible = false;
             // 
             // DecayRateLVQ
             // 
@@ -598,6 +599,7 @@
             this.DecayRateLVQ.Name = "DecayRateLVQ";
             this.DecayRateLVQ.Size = new System.Drawing.Size(148, 26);
             this.DecayRateLVQ.TabIndex = 34;
+            this.DecayRateLVQ.Visible = false;
             // 
             // label14
             // 
